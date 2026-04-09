@@ -75,7 +75,7 @@ export function NewsCarousel() {
                    <Calendar className="w-3.5 h-3.5" />
                    {news.date}
                 </div>
-                <h4 className="text-2xl font-medium text-brand-text leading-tight group-hover:underline underline-offset-8 decoration-brand-text/20 transition-all">
+                <h4 className="text-2xl font-medium text-brand-text leading-tight decoration-brand-text/20 transition-all">
                   {news.title}
                 </h4>
               </div>

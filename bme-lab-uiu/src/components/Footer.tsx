@@ -4,8 +4,19 @@ import { Link } from '@tanstack/react-router';
 
 export function Footer() {
   return (
-    <footer className="pt-40 pb-20 px-6 border-t border-brand-border mt-20">
-      <div className="max-w-[1200px] mx-auto">
+    <footer className="relative pt-32 pb-20 px-6 bg-brand-bg border-t border-brand-border overflow-hidden">
+      {/* Subtle DNA Helix Decoration for Footer */}
+      <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] opacity-[0.03] pointer-events-none select-none rotate-[-45deg]">
+        <svg viewBox="0 0 100 100" className="w-full h-full">
+          <path d="M20,0 C40,20 10,40 30,60 C50,80 20,100 20,100" fill="none" stroke="currentColor" strokeWidth="0.8" />
+          <path d="M40,0 C20,20 50,40 30,60 C10,80 40,100 40,100" fill="none" stroke="currentColor" strokeWidth="0.8" />
+          {[...Array(15)].map((_, i) => (
+             <circle key={i} cx={30 + Math.sin(i) * 10} cy={i * 7} r="0.5" fill="currentColor" opacity="0.5" />
+          ))}
+        </svg>
+      </div>
+
+      <div className="max-w-[1200px] mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-20">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-8">

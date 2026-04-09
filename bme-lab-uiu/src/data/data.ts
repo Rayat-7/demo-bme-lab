@@ -65,6 +65,34 @@ export const equipmentData: Equipment[] = [
     image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=800"
   },
   {
+    id: "thermal-cycler",
+    name: "Bio-Rad T100 Thermal Cycler",
+    origin: "USA",
+    description: "Features an intuitive touch-screen interface and thermal gradient capability for efficient PCR applications.",
+    image: "https://images.unsplash.com/photo-1579154212624-8b598f828731?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "chemidoc",
+    name: "Bio-Rad ChemiDoc MP",
+    origin: "USA",
+    description: "All-in-one solution for imaging and analyzing gels and western blots with high sensitivity.",
+    image: "https://images.pexels.com/photos/8533016/pexels-photo-8533016.jpeg"
+  },
+  {
+    id: "vortex-daihan",
+    name: "DAIHAN MaXshake VM-30",
+    origin: "Korea",
+    description: "Multifunction vortex mixer with variable speed control up to 3,300rpm for efficient sample mixing.",
+    image: "https://images.pexels.com/photos/8442448/pexels-photo-8442448.jpeg"
+  },
+  {
+    id: "vortex-dlab",
+    name: "DLAB MX-S Vortex Mixer",
+    origin: "USA",
+    description: "Variable speed mixer from 0 to 3,000 rpm for versatile laboratory mixing applications.",
+    image: "https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg"
+  },
+  {
     id: "humalyzer",
     name: "HumaLyzer 3000",
     origin: "Germany",
