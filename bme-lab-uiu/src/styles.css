@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-bg: #f2f5f2;
+  --color-brand-text: #0e1f1a;
+  --color-brand-text-soft: #4a5d57;
+  --color-brand-accent: #2a4d3f;
+  --color-brand-border: #d1d9d1;
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 120 10% 96%;
+    --foreground: 165 37% 9%;
+    --card: 120 10% 96%;
+    --card-foreground: 165 37% 9%;
+    --popover: 120 10% 96%;
+    --popover-foreground: 165 37% 9%;
+    --primary: 165 37% 9%;
+    --primary-foreground: 120 10% 96%;
+    --secondary: 120 10% 90%;
+    --secondary-foreground: 165 37% 9%;
+    --muted: 120 10% 90%;
+    --muted-foreground: 165 10% 33%;
+    --accent: 120 10% 90%;
+    --accent-foreground: 165 37% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 120 10% 85%;
+    --input: 120 10% 85%;
+    --ring: 165 37% 9%;
+    --radius: 0.5rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--color-brand-text);
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pill-nav {
+  border: 1px solid var(--color-brand-border);
+  background: rgba(242, 245, 242, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 9999px;
+}
+
+.hero-title {
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.nav-item {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-brand-text);
+  transition: opacity 0.2s;
+}
+
+.nav-item:hover {
+  opacity: 0.7;
+}
+
+.contact-button {
+  border: 1px solid var(--color-brand-text);
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.contact-button:hover {
+  background: var(--color-brand-text);
+  color: white;
+}
+
+.rise-in {
+  animation: rise-in 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
