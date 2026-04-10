@@ -18,18 +18,32 @@ export function ResearchAreasSection() {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {areas.map((area) => (
-            <div key={area.title} className="p-10 rounded-[32px] bg-brand-bg border border-brand-border hover:bg-[#e6ebe6] transition-all hover:-translate-y-2 cursor-pointer group flex flex-col h-full">
-              <div className="w-12 h-12 rounded-full border border-brand-text/20 mb-8 flex items-center justify-center group-hover:bg-brand-text group-hover:text-brand-bg transition-colors">
-                 <span className="text-xs font-bold">+</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+          {areas.map((area) => {
+            const isSpecial = area.title === 'Gene Polymorphism';
+            return (
+              <div 
+                key={area.title} 
+                className={`p-10 rounded-[40px] border transition-all duration-700 cursor-pointer group flex flex-col h-full ${
+                  isSpecial 
+                    ? 'bg-brand-text text-brand-bg border-transparent scale-[1.05] shadow-2xl hover:bg-brand-bg hover:text-brand-text hover:border-brand-border hover:scale-100' 
+                    : 'bg-brand-bg text-brand-text border-brand-border hover:bg-[#e6ebe6] hover:-translate-y-2'
+                }`}
+              >
+                <div className={`w-12 h-12 rounded-full border mb-8 flex items-center justify-center transition-colors duration-500 ${
+                  isSpecial ? 'border-brand-bg/20 group-hover:border-brand-text/20 group-hover:bg-brand-text group-hover:text-brand-bg' : 'border-brand-text/20 group-hover:bg-brand-text group-hover:text-brand-bg'
+                }`}>
+                   <span className="text-xs font-bold">+</span>
+                </div>
+                <h4 className="text-xl font-bold uppercase tracking-widest mb-4 leading-tight">{area.title}</h4>
+                <p className={`text-sm font-medium leading-relaxed transition-opacity duration-500 ${
+                  isSpecial ? 'text-brand-bg/60 group-hover:text-brand-text/50' : 'text-brand-text/50'
+                }`}>
+                  {area.desc}
+                </p>
               </div>
-              <h4 className="text-xl font-bold uppercase tracking-widest text-brand-text mb-4 leading-tight">{area.title}</h4>
-              <p className="text-sm text-brand-text/50 font-medium leading-relaxed">
-                {area.desc}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

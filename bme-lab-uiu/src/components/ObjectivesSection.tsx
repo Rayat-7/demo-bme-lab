@@ -37,13 +37,13 @@ export function ObjectivesSection() {
            style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '12px 12px' }} />
       
       <div className="max-w-[1500px] w-full mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-[5%]">
-          {/* Left Side: Cards (20%) */}
-          <div className="w-full lg:w-[20%] space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-bg/30">Laboratory Objectives</h2>
-              <h3 className="text-3xl md:text-4xl font-medium tracking-tighter leading-tight">
-                Talent & Technology.
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+          {/* Left Side: Cards */}
+          <div className="w-full lg:w-[35%] space-y-10">
+            <div className="space-y-6">
+              <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-brand-bg/30">Laboratory Objectives</h2>
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter leading-[1.1]">
+                Talent & <br className="hidden lg:block" /> Technology.
               </h3>
             </div>
             
@@ -52,16 +52,15 @@ export function ObjectivesSection() {
                 <button
                   key={obj.id}
                   onMouseEnter={() => setActive(obj.id)}
-                  className={`w-full text-left p-5 rounded-[24px] transition-all duration-500 flex gap-4 items-start ${
+                  className={`w-full text-left p-6 md:p-8 rounded-[32px] transition-all duration-700 ease-[cubic-bezier(0.23, 1, 0.32, 1)] flex gap-6 items-start ${
                     active === obj.id 
-                      ? 'bg-brand-bg text-brand-text shadow-2xl scale-[1.05]' 
-                      : 'opacity-30 hover:opacity-100 hover:bg-brand-bg/5'
+                      ? 'bg-brand-bg text-brand-text shadow-[0_20px_50px_rgba(0,0,0,0.1)] scale-[1.02]' 
+                      : 'opacity-20 hover:opacity-100 hover:bg-brand-bg/5'
                   }`}
                 >
-                  <span className="text-[10px] font-bold font-mono mt-1">{obj.id}</span>
-                  <div className="space-y-1">
-                    <h4 className="text-lg font-bold tracking-tight leading-none">{obj.title}</h4>
-                    <p className={`text-[11px] leading-relaxed opacity-70 transition-all duration-500 ${active === obj.id ? 'opacity-100 block' : 'opacity-0 h-0 overflow-hidden'}`}>
+                  <div className="space-y-3">
+                    <h4 className="text-xl md:text-2xl font-bold tracking-tight leading-none">{obj.title}</h4>
+                    <p className={`text-xs md:text-sm leading-relaxed opacity-70 transition-all duration-700 ease-in-out ${active === obj.id ? 'opacity-100 max-h-40 mt-3' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                       {obj.desc}
                     </p>
                   </div>
@@ -71,7 +70,7 @@ export function ObjectivesSection() {
           </div>
           
           {/* Right Side: Image (75%) */}
-          <div className="w-full lg:w-[75%] relative aspect-[16/9] lg:aspect-auto lg:h-[70vh] rounded-[48px] overflow-hidden border-[12px] border-brand-bg/5 shadow-2xl transition-all duration-700">
+          <div className="w-full lg:w-[65%] relative aspect-[4/3] lg:h-[75vh] rounded-[60px] overflow-hidden border-[16px] border-brand-bg/5 shadow-3xl transition-all duration-1000 ease-in-out">
             {objectives.map((obj) => (
               <img 
                 key={obj.id}

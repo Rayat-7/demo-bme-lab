@@ -31,12 +31,12 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="max-w-[1400px] w-full mx-auto space-y-12 rise-in flex flex-col items-center">
-        <h1 className="hero-title text-[56px] md:text-[88px] text-brand-text max-w-[1100px]">
-          Advancing Pharmaceutical <br /> Science through Research.
+      <div className="max-w-[1400px] w-full mx-auto space-y-8 md:space-y-12 rise-in flex flex-col items-center">
+        <h1 className="hero-title text-[40px] sm:text-[56px] md:text-[88px] text-brand-text max-w-[1100px] leading-[1.1]">
+          Advancing Pharmaceutical <br className="hidden sm:block" /> Science through Research.
         </h1>
         
-        <div className="w-full max-w-[1400px] mt-12 rounded-[40px] overflow-hidden aspect-[21/9] bg-brand-border shadow-2xl">
+        <div className="w-full max-w-[1400px] mt-8 md:mt-12 rounded-[32px] md:rounded-[40px] overflow-hidden aspect-[4/3] sm:aspect-video lg:aspect-[21/9] bg-brand-border shadow-2xl">
           <img 
             src="https://images.pexels.com/photos/8533016/pexels-photo-8533016.jpeg" 
             alt="Research Laboratory"

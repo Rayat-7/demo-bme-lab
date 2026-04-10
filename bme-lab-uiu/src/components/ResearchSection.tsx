@@ -32,9 +32,13 @@ export function ResearchSection() {
                 }`}>
                   0{index + 1}
                 </span>
-                <ArrowUpRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${
-                  index === 0 ? 'text-brand-bg/40' : 'text-brand-text/20 group-hover:text-brand-bg'
-                }`} />
+                <div className={`w-10 h-10 rounded-full border border-current flex items-center justify-center transition-all duration-500 ${
+                   index === 0 ? 'border-brand-bg/10' : 'border-brand-text/10'
+                }`}>
+                   <ArrowUpRight className={`w-5 h-5 transition-transform duration-500 group-hover:rotate-[45deg] ${
+                     index === 0 ? 'text-brand-bg/40 group-hover:text-brand-bg/100' : 'text-brand-text/20 group-hover:text-brand-bg'
+                   }`} />
+                </div>
               </div>
               <h4 className="text-xl font-medium mb-6 leading-tight">{project.title}</h4>
               <p className={`text-sm font-medium leading-relaxed transition-opacity duration-300 ${

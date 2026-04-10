@@ -69,7 +69,7 @@ export const equipmentData: Equipment[] = [
     name: "Bio-Rad T100 Thermal Cycler",
     origin: "USA",
     description: "Features an intuitive touch-screen interface and thermal gradient capability for efficient PCR applications.",
-    image: "https://images.unsplash.com/photo-1579154212624-8b598f828731?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.pexels.com/photos/8442024/pexels-photo-8442024.jpeg"
   },
   {
     id: "chemidoc",
@@ -83,7 +83,7 @@ export const equipmentData: Equipment[] = [
     name: "DAIHAN MaXshake VM-30",
     origin: "Korea",
     description: "Multifunction vortex mixer with variable speed control up to 3,300rpm for efficient sample mixing.",
-    image: "https://images.pexels.com/photos/8442448/pexels-photo-8442448.jpeg"
+    image: "https://images.pexels.com/photos/8442024/pexels-photo-8442024.jpeg"
   },
   {
     id: "vortex-dlab",

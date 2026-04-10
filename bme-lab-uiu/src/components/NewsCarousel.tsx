@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { newsData } from '../data/data';
 import { Link } from '@tanstack/react-router';
-import { ArrowRight, ArrowLeft, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Calendar, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
 
 export function NewsCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -34,26 +34,34 @@ export function NewsCarousel() {
   return (
     <section className="py-32 px-6 overflow-hidden">
       <div className="max-w-[1200px] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-20 gap-8">
           <div className="max-w-2xl">
             <h2 className="text-sm font-bold tracking-widest text-brand-text/40 uppercase mb-4">Laboratory Insights</h2>
-            <h3 className="text-4xl md:text-5xl font-medium tracking-tight text-brand-text">
+            <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-brand-text leading-tight">
                Recent News & Activities.
             </h3>
           </div>
-          <div className="flex items-center gap-4">
-             <button 
-                onClick={() => scroll('left')}
-                className="w-12 h-12 rounded-full border border-brand-border flex items-center justify-center text-brand-text/40 hover:text-brand-text hover:border-brand-text transition-all"
+          <div className="flex items-center gap-6">
+             <Link 
+               to="/news"
+               className="text-[11px] font-bold uppercase tracking-widest text-brand-text hover:opacity-50 transition-opacity border-b border-brand-text pb-1 mr-4 hidden sm:block"
              >
-                <ChevronLeft className="w-6 h-6" />
-             </button>
-             <button 
-                onClick={() => scroll('right')}
-                className="w-12 h-12 rounded-full border border-brand-border flex items-center justify-center text-brand-text/40 hover:text-brand-text hover:border-brand-text transition-all"
-             >
-                <ChevronRight className="w-6 h-6" />
-             </button>
+               View All News
+             </Link>
+             <div className="flex gap-4">
+                <button 
+                   onClick={() => scroll('left')}
+                   className="w-12 h-12 rounded-full border border-brand-border flex items-center justify-center text-brand-text/40 hover:text-brand-text hover:border-brand-text transition-all"
+                >
+                   <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button 
+                   onClick={() => scroll('right')}
+                   className="w-12 h-12 rounded-full border border-brand-border flex items-center justify-center text-brand-text/40 hover:text-brand-text hover:border-brand-text transition-all"
+                >
+                   <ChevronRight className="w-6 h-6" />
+                </button>
+             </div>
           </div>
         </div>
 
@@ -68,22 +76,36 @@ export function NewsCarousel() {
               key={news.id}
               to="/news/$newsId"
               params={{ newsId: news.id }}
-              className="min-w-[320px] md:min-w-[400px] bg-brand-bg border border-brand-border p-10 rounded-[40px] snap-center hover:border-brand-text transition-all duration-300 group flex flex-col justify-between h-[350px]"
+              className="min-w-[280px] md:min-w-[340px] bg-brand-bg border border-brand-border p-8 md:p-10 rounded-[40px] snap-center hover:border-brand-text transition-all duration-300 group flex flex-col justify-between h-[320px] shadow-sm hover:shadow-xl"
             >
               <div>
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-text/30 mb-8">
-                   <Calendar className="w-3.5 h-3.5" />
-                   {news.date}
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-text/30">
+                    <Calendar className="w-3.5 h-3.5" />
+                    {news.date}
+                  </div>
+                  <div className="w-8 h-8 rounded-full border border-brand-text/5 flex items-center justify-center group-hover:bg-brand-text group-hover:text-brand-bg transition-all duration-500">
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-500 group-hover:rotate-[45deg]" />
+                  </div>
                 </div>
-                <h4 className="text-2xl font-medium text-brand-text leading-tight decoration-brand-text/20 transition-all">
+                <h4 className="text-xl md:text-2xl font-medium text-brand-text leading-tight group-hover:opacity-60 transition-opacity">
                   {news.title}
                 </h4>
               </div>
-              <p className="text-brand-text/50 font-medium leading-relaxed line-clamp-2">
+              <p className="text-brand-text/50 font-medium text-sm leading-relaxed line-clamp-2">
                 {news.description}
               </p>
             </Link>
           ))}
+        </div>
+        
+        <div className="mt-8 flex justify-center sm:hidden">
+           <Link 
+             to="/news"
+             className="text-[11px] font-bold uppercase tracking-widest text-brand-text border-b border-brand-text pb-1"
+           >
+             View All News
+           </Link>
         </div>
       </div>
     </section>
