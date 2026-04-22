@@ -1,0 +1,21 @@
+services:
+  brl-web:
+    image: ghcr.io/monzim/client-uiu-brl-portal/web:latest
+    container_name: brl-web
+    restart: unless-stopped
+    pull_policy: always
+    networks:
+      - center-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=center-network"
+      - "traefik.http.routers.brl-web.rule=Host(`brl.client.monzim.com`)"
+      - "traefik.http.routers.brl-web.entrypoints=websecure"
+      - "traefik.http.routers.brl-web.tls=true"
+      - "traefik.http.routers.brl-web.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.brl-web.service=brl-web"
+      - "traefik.http.services.brl-web.loadbalancer.server.port=3000"
+
+networks:
+  center-network:
+    external: true

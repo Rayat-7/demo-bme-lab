@@ -1,0 +1,59 @@
+variables:
+  - &image_repo ghcr.io/${CI_REPO}/web
+
+steps:
+  # 1. DRY RUN: Build (no push) on Pull Requests targeting main
+  build-dry-run:
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      registry: ghcr.io
+      repo: *image_repo
+      dockerfile: Dockerfile
+      context: .
+      dry_run: true
+    when:
+      - event: pull_request
+        branch: main
+
+  # 2. PROD: Build & push on merge/push to main
+  build-push:
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      registry: ghcr.io
+      repo: *image_repo
+      dockerfile: Dockerfile
+      context: .
+      cache_from: ghcr.io/${CI_REPO}/web:latest
+      auto_tag: true
+      tags:
+        - latest
+        - ${CI_COMMIT_SHA:0:7}
+      username:
+        from_secret: gh_username
+      password:
+        from_secret: gh_token
+    when:
+      - event: push
+        branch: main
+
+  # 3. DEPLOY: SSH into server after successful push
+  deploy:
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        from_secret: ssh_host
+      username:
+        from_secret: ssh_username
+      password:
+        from_secret: ssh_password
+      port: 22
+      script:
+        - cd /home/monzim/centrifuge-config/client/brl
+        - docker compose pull
+        - docker compose down
+        - docker compose up -d
+    depends_on:
+      - build-push
+    when:
+      - event: push
+        branch: main
