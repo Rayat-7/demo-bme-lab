@@ -1,5 +1,7 @@
 import React from 'react';
 import { collaborationData } from '../data/data';
+import { Link } from '@tanstack/react-router';
+import { ArrowUpRight } from 'lucide-react';
 
 export function CollaborationSection() {
   return (
@@ -11,7 +13,7 @@ export function CollaborationSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center mb-16">
           {collaborationData.map((collab) => (
             <div key={collab.id} className="flex flex-col items-center text-center opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
                <span className="text-3xl font-bold tracking-tighter text-brand-text mb-2 uppercase">{collab.name}</span>
@@ -20,6 +22,16 @@ export function CollaborationSection() {
                </p>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center">
+          <Link 
+            to="/partnership" 
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-text bg-brand-text/5 hover:bg-brand-text hover:text-brand-bg px-6 py-3 rounded-full transition-all duration-300 group"
+          >
+            Learn More
+            <ArrowUpRight className="w-3 h-3 group-hover:rotate-[45deg] transition-transform duration-300" />
+          </Link>
         </div>
       </div>
     </section>

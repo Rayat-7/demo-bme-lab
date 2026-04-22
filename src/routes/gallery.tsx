@@ -12,6 +12,8 @@ const images = [
   { url: 'https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg', caption: 'Compound Evaluation' },
   { url: 'https://images.pexels.com/photos/3735709/pexels-photo-3735709.jpeg', caption: 'Student Training' },
   { url: 'https://images.pexels.com/photos/5439141/pexels-photo-5439141.jpeg', caption: 'Lab Safety Procedures' },
+  { url: 'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg', caption: 'Equipment Testing' },
+  { url: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg', caption: 'Team Collaboration' },
 ]
 
 function Gallery() {
@@ -25,7 +27,7 @@ function Gallery() {
            </h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
            {images.map((img, i) => (
               <div key={i} className="group relative aspect-[4/5] rounded-[48px] overflow-hidden bg-brand-border cursor-none">
                  <img 

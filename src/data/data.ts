@@ -29,6 +29,20 @@ export interface NewsItem {
   image?: string;
 }
 
+export interface AboutData {
+  intro: string;
+  aim: string;
+  objectives: string[];
+  vision: string;
+  mission: string[];
+  location: {
+    address: string;
+    mapUrl: string;
+    contact: string;
+    importantContact: string;
+  };
+}
+
 export const projectsData: Project[] = [
   {
     id: "smart-hydrogel",
@@ -65,60 +79,88 @@ export const projectsData: Project[] = [
 
 export const equipmentData: Equipment[] = [
   {
-    id: "microcentrifuge",
-    name: "Mini Microcentrifuge",
-    origin: "Corning, USA",
-    description: "Compact lab essential with an 8 x 1.5/2.0 mL tube capacity and fixed 6,000 RPM speed.",
-    image: "https://images.pexels.com/photos/8442024/pexels-photo-8442024.jpeg"
+    id: "inverted-microscope",
+    name: "Inverted Microscope",
+    origin: "Japan",
+    description: "The Nikon Eclipse Ts2 inverted microscope provides brilliantly clear images for efficient cell culture observation using its LED illumination system.",
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: "freezer",
-    name: "Ultra-Low Temp Freezer",
-    origin: "Esco Lifesciences",
-    description: "Reliable solution for long-term sample storage with a range of -50°C to -86°C.",
-    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    id: "thermal-cycler",
-    name: "Bio-Rad T100 Thermal Cycler",
-    origin: "USA",
-    description: "Features an intuitive touch-screen interface and thermal gradient capability for efficient PCR applications.",
-    image: "https://images.pexels.com/photos/8442024/pexels-photo-8442024.jpeg"
-  },
-  {
-    id: "chemidoc",
-    name: "Bio-Rad ChemiDoc MP",
-    origin: "USA",
-    description: "All-in-one solution for imaging and analyzing gels and western blots with high sensitivity.",
+    id: "co2-incubator",
+    name: "CO2 Incubator",
+    origin: "Singapore",
+    description: "The Esco CelCulture CO2 Incubator features an ISOCIDE antimicrobial coating and a high-performance IR CO2 sensor for precise environmental control.",
     image: "https://images.pexels.com/photos/8533016/pexels-photo-8533016.jpeg"
   },
   {
-    id: "vortex-daihan",
-    name: "DAIHAN MaXshake VM-30",
-    origin: "Korea",
-    description: "Multifunction vortex mixer with variable speed control up to 3,300rpm for efficient sample mixing.",
+    id: "centrifuge-machine",
+    name: "Centrifuge Machine",
+    origin: "Japan",
+    description: "The Kubota Model 3520 is a compact tabletop micro refrigerated centrifuge, ideal for processing various microtubes with highest 15000 rpm speed.",
     image: "https://images.pexels.com/photos/8442024/pexels-photo-8442024.jpeg"
   },
   {
-    id: "vortex-dlab",
-    name: "DLAB MX-S Vortex Mixer",
+    id: "nanodrop",
+    name: "NanoDrop One",
     origin: "USA",
-    description: "Variable speed mixer from 0 to 3,000 rpm for versatile laboratory mixing applications.",
+    description: "Thermo Scientific microvolume UV-Vis spectrophotometer provides accurate quantification of DNA, RNA, and proteins using only 1-2 µL of sample.",
     image: "https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg"
+  },
+  {
+    id: "freezer",
+    name: "Ultra-Low Temperature Freezer",
+    origin: "Singapore",
+    description: "The Esco Lexicon II is a reliable solution for long-term sample storage, featuring a temperature range of -50°C to -86°C with superior insulation.",
+    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "chemidoc",
+    name: "ChemiDoc MP Imaging System",
+    origin: "USA",
+    description: "The Bio-Rad ChemiDoc MP is an all-in-one solution for imaging and analyzing gels and western blots.",
+    image: "https://images.pexels.com/photos/8533016/pexels-photo-8533016.jpeg"
+  },
+  {
+    id: "protean-tetra",
+    name: "Mini-PROTEAN Tetra System",
+    origin: "USA",
+    description: "A vertical gel electrophoresis unit from Bio-Rad that allows for the separation of proteins or DNA, running up to four mini gels simultaneously.",
+    image: "https://images.pexels.com/photos/8442024/pexels-photo-8442024.jpeg"
+  },
+  {
+    id: "thermal-cycler",
+    name: "T100 Thermal Cycler",
+    origin: "USA",
+    description: "A compact and reliable instrument featuring an intuitive touch-screen interface and thermal gradient capability for efficient PCR applications.",
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "mini-microcentrifuge",
+    name: "Mini Microcentrifuge",
+    origin: "USA",
+    description: "The Corning LSE Mini Microcentrifuge is a compact lab essential with an 8 x 1.5/2.0 mL tube capacity and a fixed 6,000 RPM speed.",
+    image: "https://images.pexels.com/photos/8442024/pexels-photo-8442024.jpeg"
   },
   {
     id: "humalyzer",
     name: "HumaLyzer 3000",
     origin: "Germany",
-    description: "Semi-automated clinical chemistry analyzer known for reliability and efficiency.",
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=800"
+    description: "A semi-automated clinical chemistry analyzer known for its reliability and ability to measure a wide range of clinical parameters efficiently.",
+    image: "https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg"
   },
   {
-    id: "microscope",
-    name: "Leica DM750",
-    origin: "Germany",
-    description: "Binocular microscope designed for educational and laboratory use.",
-    image: "https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&q=80&w=800"
+    id: "safety-cabinet",
+    name: "Biological Safety Cabinet",
+    origin: "Singapore",
+    description: "The ESCO Labculture Class II provides essential personnel, product, and environmental protection using a HEPA filter system.",
+    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "vortex-daihan",
+    name: "DAIHAN MaXshake VM-30",
+    origin: "Korea",
+    description: "A multifunction vortex mixer with variable speed control up to 3,300rpm for efficient sample mixing.",
+    image: "https://images.pexels.com/photos/8442024/pexels-photo-8442024.jpeg"
   }
 ];
 
@@ -178,3 +220,123 @@ export const newsData: NewsItem[] = [
   }
 ];
 
+export const aboutData: AboutData = {
+  intro: "The Biomedical Research Laboratory of the Department of Pharmacy at United International University (UIU) is dedicated to advancing scientific knowledge in the field of pharmaceutical and biomedical sciences. Our laboratory serves as a dynamic platform for innovative research, academic excellence, and collaborative learning.\n\nWe focus on addressing critical healthcare challenges through experimental research, modern analytical techniques, and interdisciplinary approaches. Our work bridges the gap between basic science and clinical applications, aiming to improve human health and therapeutic outcomes.",
+  aim: "The primary aim of our laboratory is to conduct high-quality research in biomedical and pharmaceutical sciences that contributes to the development of effective, safe, and innovative healthcare solutions.",
+  objectives: [
+    "To promote cutting-edge research in pharmaceutical and biomedical fields",
+    "To develop novel drug delivery systems, including hydrogels and nanomaterials",
+    "To investigate disease mechanisms at cellular and molecular levels",
+    "To evaluate antioxidant, antimicrobial, and therapeutic activities of new compounds",
+    "To train students in modern laboratory techniques such as HPLC, cell culture, and molecular biology",
+    "To encourage collaboration with national and international research institutions",
+    "To publish findings in high-impact scientific journals"
+  ],
+  vision: "To become a leading biomedical research center in Bangladesh and internationally recognized for innovation, quality research, and scientific contribution.",
+  mission: [
+    "To generate impactful research that addresses real-world health problems",
+    "To develop skilled researchers and future scientists",
+    "To contribute to the advancement of pharmaceutical sciences"
+  ],
+  location: {
+    address: "Biomedical Research Laboratory (Room 907), Department of Pharmacy, United International University, United City, Madani Ave, Dhaka 1212, Bangladesh",
+    mapUrl: "https://maps.app.goo.gl/tBo1emmv9x7zH2Rf6",
+    contact: "tahmina@pharmacy.uiu.ac.bd, ferdowsy@admin.uiu.ac.bd",
+    importantContact: "09604 848848 (Extension: 5500)"
+  }
+};
+
+export interface ResearchArea {
+  title: string;
+  description: string;
+}
+
+export const researchAreasData: ResearchArea[] = [
+  {
+    title: "Cell Culture",
+    description: "Cell culture research involves the growth and maintenance of cells under controlled laboratory conditions. This area is essential for studying cellular behavior, drug responses, toxicity, and disease mechanisms. Our laboratory utilizes cell culture techniques to evaluate the effectiveness and safety of pharmaceutical formulations, including hydrogels and nanoparticles."
+  },
+  {
+    title: "Wound Healing",
+    description: "Wound healing research focuses on developing and evaluating materials and therapies that enhance tissue repair and regeneration. Our work includes studying hydrogel-based systems, antimicrobial dressings, and bioactive compounds that accelerate healing, reduce infection, and improve tissue recovery."
+  },
+  {
+    title: "Gene Polymorphism",
+    description: "Gene polymorphism research examines variations in DNA sequences and their impact on disease susceptibility, drug response, and therapeutic outcomes. This area helps in understanding personalized medicine and identifying genetic factors involved in various diseases."
+  },
+  {
+    title: "Antimicrobial Resistance Gene",
+    description: "Antimicrobial resistance (AMR) is a growing global health concern. Our research focuses on identifying resistant microbial strains and evaluating new antimicrobial agents, natural extracts, and advanced formulations to combat resistant infections effectively."
+  }
+];
+
+export interface Partnership {
+  name: string;
+  description: string;
+  logoUrl?: string;
+}
+
+export const partnershipsIntro = "The Biomedical Research Laboratory at the Department of Pharmacy, United International University (UIU), actively collaborates with leading healthcare and research institutions to enhance the quality, impact, and translational value of our research. These partnerships enable knowledge exchange, access to advanced facilities, and the opportunity to work on real-world clinical challenges.";
+
+export const partnershipsData: Partnership[] = [
+  {
+    name: "International Centre for Diarrhoeal Disease Research (icddr,b), Bangladesh",
+    logoUrl: "/images/icddrb-logo.png",
+    description: "Our partnership with the International Centre for Diarrhoeal Disease Research, Bangladesh (icddr,b) significantly enhances our research capabilities, particularly in the areas of infectious diseases, public health, and clinical investigation. Through this collaboration, we benefit from access to state-of-the-art cell culture facilities, advanced research infrastructure, and the expertise of leading scientists. This strategic alliance enables us to conduct high-quality biomedical research supported by robust datasets and innovative methodologies. Furthermore, our joint research initiatives are aligned with addressing critical health challenges in Bangladesh and contribute to generating impactful, globally relevant scientific outcomes."
+  },
+  {
+    name: "LabAid Cancer Hospital, Dhanmondi",
+    logoUrl: "/images/labaid-logo.png",
+    description: "In collaboration with LabAid Cancer Hospital, our laboratory advances research in oncology with a focus on drug response analysis, biomarker discovery, and therapeutic evaluation. This partnership bridges laboratory research with clinical practice, enabling a strong translational research framework. A key strength of this collaboration is access to clinically relevant cancer patient samples, which facilitates robust experimental validation and enhances the reliability of our findings. The integration of clinical insights with laboratory investigations supports the development of improved diagnostic tools and more effective treatment strategies. Through this collaboration, we aim to contribute to evidence-based cancer research and improve patient outcomes both in Bangladesh and beyond."
+  },
+  {
+    name: "Omega Hospital",
+    description: "In collaboration with Omega Hospital, our laboratory expands its scope in clinical and diagnostic research, fostering a strong connection between experimental findings and real-world medical practice. This partnership enables the validation of laboratory results within clinical settings, ensuring greater translational relevance. Through this collaboration, we conduct studies focused on disease mechanisms, therapeutic outcomes, and patient-centered care. Access to clinical expertise and diagnostic resources further strengthens our ability to generate reliable and impactful research findings. Together, we aim to advance evidence-based healthcare solutions and contribute to improved patient management and treatment strategies in Bangladesh and beyond."
+  }
+];
+
+export interface Award {
+  name: string;
+  recipient: string;
+  amount: string;
+  projectTitle?: string;
+  description?: string;
+}
+
+export const awardsData: Award[] = [
+  {
+    name: "OWSD Early Career Fellowship",
+    recipient: "Professor Dr Tahmina Foyez",
+    amount: "50,000 USD",
+    projectTitle: "Biocompatible Self-Healing Hydrogel as a Promising Antimicrobial and Wound Healing Application",
+    description: "Professor Dr Tahmina Foyez was awarded the prestigious OWSD Early Career Fellowship by the Organization for Women in Science for the Developing World in recognition of her outstanding research contributions. This highly competitive award provides research funding enabling the advancement of innovative biomedical research within our laboratory. This achievement highlights our lab’s commitment to cutting-edge research and its contribution to addressing critical healthcare challenges in Bangladesh and beyond."
+  },
+  {
+    name: "IAR Research Grant for Antimicrobial Resistance Gene Study",
+    recipient: "Mr. Ferdous-Ul-Haque Joy",
+    amount: "5 Lac BDT",
+    projectTitle: "Antibiotic resistance patterns and molecular correlation of mcr-1 and mcr-3 genes in colistin-resistant urinary Escherichia coli isolates from tertiary-level hospital in Dhaka, Bangladesh"
+  },
+  {
+    name: "IAR Research Grant for Gene Polymorphism Study",
+    recipient: "Mr. Rajib Das",
+    amount: "5 Lac BDT",
+    projectTitle: "Role of VEGF Polymorphisms and Serum VEGF level as Potential Biomarkers in Breast Cancer: A Case-Control Study in Bangladeshi Population."
+  },
+  {
+    name: "IAR Research Grant for Phytochemistry Study",
+    recipient: "Ms. Sharmin Ahmed Rakhi",
+    amount: "5 Lac BDT"
+  },
+  {
+    name: "IAR Research Grant for MCC Study",
+    recipient: "Sabiha Tasnim",
+    amount: "5 Lac BDT"
+  },
+  {
+    name: "IAR Research Grant for Gene Polymorphism Study",
+    recipient: "Mst. Nowsad Zahan Sathi",
+    amount: "5 Lac BDT",
+    projectTitle: "Association Between IGFBP-3 Gene Polymorphisms and Serum IGFBP-3 Levels and Breast Cancer Risk Among Bangladeshi Women: A Case-Control Study"
+  }
+];

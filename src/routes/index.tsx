@@ -16,7 +16,6 @@ function App() {
     <main className="min-h-screen bg-brand-bg">
       <div id="home"><Hero /></div>
       <QuoteSection />
-      <CollaborationSection />
       <div id="news"><NewsCarousel /></div>
       <div id="research">
         <div className="hidden lg:block">
@@ -26,9 +25,10 @@ function App() {
           <ResearchSection />
         </div>
       </div>
+      <CollaborationSection />
       <div id="equipment"><EquipmentSection /></div>
 
-      <div id="faculty"><FacultySection /></div>
+      <div id="faculty"><FacultySection isHomePage={true} /></div>
       <CTASection />
     </main>
   )

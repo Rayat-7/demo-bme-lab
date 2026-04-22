@@ -35,8 +35,8 @@ export function QuoteSection() {
                  <div className="h-[1px] w-8 bg-brand-accent" />
                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-accent">Mission & Vision</span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-brand-text leading-[1.1] uppercase">
-                 EMBARK ON A JOURNEY OF <br className="hidden lg:block" /> SCIENTIFIC DISCOVERY
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-brand-text leading-[1.1] capitalize">
+                 Embark on a journey of <br className="hidden lg:block" /> scientific discovery
               </h2>
             </div>
             

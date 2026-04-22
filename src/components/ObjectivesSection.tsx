@@ -18,8 +18,8 @@ export function ObjectivesSection() {
           <div className="w-full lg:w-[40%] space-y-10">
             <div className="space-y-6">
               <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-brand-bg/30">Laboratory Initiatives</h2>
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tighter leading-[1.1] uppercase">
-                Current <br className="hidden lg:block" /> Projects.
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tighter leading-[1.1] ">
+                Current  Projects.
               </h3>
             </div>
 

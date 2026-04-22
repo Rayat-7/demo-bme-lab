@@ -37,7 +37,7 @@ export function NewsCarousel() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-20 gap-8 max-w-[1400px] mx-auto">
           <div className="max-w-2xl">
             <h2 className="text-sm font-bold tracking-widest text-brand-text/40 uppercase mb-4">Laboratory Insights</h2>
-            <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-brand-text leading-tight uppercase">
+            <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-brand-text leading-tight ">
                Recent News & Activities.
             </h3>
           </div>

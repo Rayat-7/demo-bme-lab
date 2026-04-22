@@ -1,11 +1,5 @@
 import React from 'react';
-
-const areas = [
-  { title: 'Cell Culture', desc: 'Studying cellular behavior, drug responses, toxicity, and disease mechanisms under controlled conditions.' },
-  { title: 'Wound Healing', desc: 'Developing hydrogel-based systems and antimicrobial dressings that accelerate tissue recovery.' },
-  { title: 'Gene Polymorphism', desc: 'Examining variations in DNA sequences and their impact on disease susceptibility and treatment.' },
-  { title: 'Antimicrobial Resistance', desc: 'Identifying resistant microbial strains and evaluating new formulations to combat infections.' }
-];
+import { researchAreasData } from '../data/data';
 
 export function ResearchAreasSection() {
   return (
@@ -19,7 +13,7 @@ export function ResearchAreasSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
-          {areas.map((area) => {
+          {researchAreasData.map((area) => {
             const isSpecial = area.title === 'Gene Polymorphism';
             return (
               <div 
@@ -39,7 +33,7 @@ export function ResearchAreasSection() {
                 <p className={`text-sm font-medium leading-relaxed transition-opacity duration-500 ${
                   isSpecial ? 'text-brand-bg/60 group-hover:text-brand-text/50' : 'text-brand-text/50'
                 }`}>
-                  {area.desc}
+                  {area.description}
                 </p>
               </div>
             );

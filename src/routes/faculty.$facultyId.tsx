@@ -42,7 +42,7 @@ function FacultyProfile() {
          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-text/90" />
          <div className="absolute inset-0 flex items-end">
             <div className="max-w-[1400px] w-full mx-auto px-6 pb-12">
-               <Link to="/team" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white/50 hover:text-white mb-8 transition-colors group">
+               <Link to="/faculty" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white/50 hover:text-white mb-8 transition-colors group">
                   <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> Back to Team
                </Link>
                <div className="flex items-center gap-4 mb-4">
@@ -62,14 +62,18 @@ function FacultyProfile() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           
           {/* Left Sidebar */}
-          <div className="lg:col-span-3 space-y-12">
-            {/* Portrait */}
-            <div className="aspect-[4/4] bg-brand-border overflow-hidden rounded-sm border border-brand-border/50 shadow-xl">
-               <img src={faculty.image} alt={faculty.name} className="w-full h-full object-cover grayscale-[0.2] contrast-[1.1]" />
+          <div className="lg:col-span-3 space-y-10">
+            {/* Portrait and Info */}
+            <div>
+              <div className="aspect-[4/4] bg-brand-border overflow-hidden rounded-[24px] border border-brand-border/50 shadow-xl mb-6">
+                 <img src={faculty.image} alt={faculty.name} className="w-full h-full object-cover grayscale-[0.2] contrast-[1.1]" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-black text-brand-text tracking-tighter leading-tight mb-2">{faculty.name}</h2>
+              <p className="text-xs font-bold text-brand-text/50 uppercase tracking-widest">{faculty.designation}</p>
             </div>
 
             {/* Resources / Contact */}
-            <div className="space-y-8 bg-[#fbfbfb] p-8 border border-brand-border/50">
+            <div className="space-y-8 bg-[#fbfbfb] p-8 border border-brand-border/50 rounded-xl">
                <h3 className="text-xl font-black text-brand-text uppercase tracking-tighter">Resources</h3>
                <div className="space-y-6">
                   <div className="space-y-2">
@@ -96,12 +100,12 @@ function FacultyProfile() {
           {/* Main Content Area */}
           <div className="lg:col-span-9">
             {/* Tabs */}
-            <div className="flex bg-[#f4f4f4] mb-12 overflow-x-auto no-scrollbar rounded-sm p-1">
+            <div className="flex bg-[#f4f4f4] mb-12 overflow-x-auto no-scrollbar rounded-xl p-1.5 gap-1">
                {tabs.map((tab) => (
                  <button
                    key={tab.id}
                    onClick={() => setActiveTab(tab.id)}
-                   className={`px-8 py-4 text-[11px] font-black uppercase tracking-[0.15em] transition-all whitespace-nowrap rounded-sm ${
+                   className={`flex-1 min-w-max md:min-w-0 px-6 py-4 text-[11px] font-black uppercase tracking-[0.15em] transition-all whitespace-nowrap rounded-lg ${
                      activeTab === tab.id 
                        ? 'bg-brand-text text-white shadow-lg' 
                        : 'text-brand-text/40 hover:text-brand-text hover:bg-black/5'
@@ -116,10 +120,10 @@ function FacultyProfile() {
             <div className="min-h-[500px]">
                {activeTab === 'biography' && (
                   <div className="animate-in fade-in duration-700 space-y-12">
-                    <div className="space-y-6">
-                      <p className="text-lg md:text-xl text-brand-text/70 leading-[1.8] font-medium whitespace-pre-wrap">
-                         {faculty.fullBio}
-                      </p>
+                    <div className="space-y-6 text-lg md:text-xl text-brand-text/70 leading-[1.8] font-medium">
+                       {faculty.fullBio.split('\n').map((paragraph, index) => (
+                         paragraph.trim() ? <p key={index}>{paragraph.trim()}</p> : null
+                       ))}
                     </div>
 
                     {/* Merged Career & Awards */}

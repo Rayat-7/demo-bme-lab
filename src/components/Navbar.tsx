@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from '@tanstack/react-router';
-import { Menu, X, ChevronDown, Search } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react';
 import { SearchModal } from './SearchModal';
 
 export function Navbar() {
@@ -8,6 +8,8 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   
   const location = useLocation();
   const isHome = location.pathname === '/';
@@ -15,18 +17,44 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      
+      // Background logic
+      setIsScrolled(currentScrollY > 50);
+
+      // Hide/Show logic
+      if (currentScrollY < 50) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
+
+  // Prevent background scrolling when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const navItems = [
     { label: 'About BRL', to: '/about' },
     { 
       label: 'Research', 
       subItems: [
-        { label: 'Area', to: '/#research' },
+        { label: 'Area', to: '/area' },
         { label: 'Partnership', to: '/partnership' },
         { label: 'Award and Achievement', to: '/awards' }
       ] 
@@ -34,39 +62,57 @@ export function Navbar() {
     { 
       label: 'Research Team', 
       subItems: [
-        { label: 'Faculty Members', to: '/team' },
-        { label: 'Research Assistant', to: '/team' }
+        { label: 'Faculty Members', to: '/faculty' },
+        { label: 'Research Assistant', to: '/assistants' }
       ] 
     },
 
-    { label: 'Equipment Facility', to: '/#equipment' },
-    { label: 'News and Events', to: '/#news' },
+    { label: 'Equipment Facility', to: '/equipment' },
+    { label: 'News and Events', to: '/news' },
     { label: 'Gallery', to: '/gallery' },
   ];
 
   return (
     <>
       <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          showBg ? 'bg-[#f0f7f4]/95 py-4 shadow-sm backdrop-blur-md' : 'bg-transparent py-8'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform flex flex-col ${
+          (isVisible || isOpen) ? 'translate-y-0' : '-translate-y-full'
+        } ${
+          showBg ? 'bg-brand-bg shadow-sm backdrop-blur-md' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
+        {/* Top Social Bar */}
+        {/* <div className={`w-full h-6 flex justify-end items-center px-6 transition-colors duration-500 ${showBg ? 'border-b border-brand-border/10' : ''}`}>
+          <div className="max-w-[1400px] w-full mx-auto flex justify-end gap-4">
+            <a href="#" aria-label="Facebook" className={`transition-colors ${showBg ? 'text-brand-text/60 hover:text-brand-text' : 'text-white/60 hover:text-white'}`}>
+              <Facebook className="w-3.5 h-3.5" />
+            </a>
+            <a href="#" aria-label="Twitter" className={`transition-colors ${showBg ? 'text-brand-text/60 hover:text-brand-text' : 'text-white/60 hover:text-white'}`}>
+              <Twitter className="w-3.5 h-3.5" />
+            </a>
+            <a href="#" aria-label="LinkedIn" className={`transition-colors ${showBg ? 'text-brand-text/60 hover:text-brand-text' : 'text-white/60 hover:text-white'}`}>
+              <Linkedin className="w-3.5 h-3.5" />
+            </a>
+            <a href="#" aria-label="YouTube" className={`transition-colors ${showBg ? 'text-brand-text/60 hover:text-brand-text' : 'text-white/60 hover:text-white'}`}>
+              <Youtube className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div> */}
+
+        {/* Main Navbar */}
+        <div className={`max-w-[1400px] w-full mx-auto px-6 flex items-center justify-between transition-all duration-500 ${showBg ? 'py-4' : 'py-8'}`}>
           {/* Logo Section */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-4 group relative z-[60]">
-            <div className="flex flex-col">
-              <span className={`text-xl sm:text-2xl font-black tracking-tighter leading-none transition-colors ${isOpen ? 'text-white' : (showBg ? 'text-brand-accent' : 'text-white')}`}>
-                BRL
-              </span>
-              <span className={`text-[7px] sm:text-[8px] font-bold uppercase tracking-[0.2em] transition-colors ${isOpen ? 'text-white/60' : (showBg ? 'text-brand-accent/60' : 'text-white/60')}`}>
-                Research Lab
-              </span>
-            </div>
+          <Link to="/" className="flex items-center gap-3 sm:gap-4 group relative z-[60]">
+            <img 
+              src={(isOpen || !showBg) ? "/images/transparent original logo.png" : "/images/transparent black logo.png"} 
+              alt="BRL Logo" 
+              className="h-10 sm:h-12 w-auto object-contain transition-all duration-500"
+            />
             <div className={`h-8 sm:h-10 w-[1px] bg-current opacity-20 mx-1 sm:mx-2 ${isOpen ? 'text-white' : (showBg ? 'text-brand-accent' : 'text-white')}`} />
             <img 
               src={(isOpen || !showBg) ? "/images/uiu-logo.png" : "/images/UIU-Logo-2.png"} 
               alt="UIU Logo" 
-              className="h-8 sm:h-10 w-auto object-contain transition-all"
+              className="h-8 sm:h-10 w-auto object-contain transition-all duration-500"
             />
           </Link>
 
@@ -97,7 +143,7 @@ export function Navbar() {
                     </span>
                   )}
                   {item.subItems && (
-                    <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${activeDropdown === item.label ? 'rotate-180' : ''} ${showBg ? 'text-brand-accent' : 'text-white'}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeDropdown === item.label ? 'rotate-180' : ''} ${showBg ? 'text-brand-accent' : 'text-white'}`} />
                   )}
                 </div>
 
@@ -114,7 +160,7 @@ export function Navbar() {
                           {sub.to.startsWith('/#') ? (
                             <a
                               href={sub.to.substring(1)}
-                              className="block px-6 py-3 text-[10px] font-bold text-white hover:bg-white/10 transition-colors uppercase tracking-[0.2em]"
+                              className="block px-6 py-3 text-xs font-bold text-white hover:bg-white/10 transition-colors uppercase tracking-widest"
                               onClick={() => setActiveDropdown(null)}
                             >
                               {sub.label}
@@ -122,7 +168,7 @@ export function Navbar() {
                           ) : (
                             <Link
                               to={sub.to as any}
-                              className="block px-6 py-3 text-[10px] font-bold text-white hover:bg-white/10 transition-colors uppercase tracking-[0.2em]"
+                              className="block px-6 py-3 text-xs font-bold text-white hover:bg-white/10 transition-colors uppercase tracking-widest"
                               onClick={() => setActiveDropdown(null)}
                             >
                               {sub.label}
@@ -166,61 +212,60 @@ export function Navbar() {
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu Overlay */}
-        <div 
-          className={`fixed inset-0 z-[45] bg-brand-text lg:hidden transition-all duration-500 ease-in-out ${
-            isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[-100%] pointer-events-none'
-          }`}
-        >
-          <div className="flex flex-col items-center justify-center h-full gap-8 px-6 text-white overflow-y-auto pt-20">
-            <nav className="flex flex-col items-center gap-6 w-full max-w-sm">
-              {navItems.map((item) => (
-                <div key={item.label} className="text-center w-full">
-                  {item.to ? (
-                    <Link 
-                      to={item.to} 
-                      className="text-xl font-bold uppercase tracking-widest hover:text-white/60 transition-colors block py-2"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <span className="text-xl font-bold uppercase tracking-widest opacity-40 block py-2">
-                      {item.label}
-                    </span>
-                  )}
-                  {item.subItems && (
-                    <div className="mt-2 flex flex-col gap-2 bg-white/5 py-3 rounded-2xl">
-                      {item.subItems.map((sub) => (
-                        <div key={sub.label}>
-                          {sub.to.startsWith('/#') ? (
-                            <a
-                              href={sub.to.substring(1)}
-                              className="text-sm font-medium text-white/60 hover:text-white transition-colors block py-1"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              {sub.label}
-                            </a>
-                          ) : (
-                            <Link
-                              to={sub.to as any}
-                              className="text-sm font-medium text-white/60 hover:text-white transition-colors block py-1"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              {sub.label}
-                            </Link>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </nav>
-          </div>
-        </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 z-[45] bg-brand-text lg:hidden transition-all duration-500 ease-in-out ${
+          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[-100%] pointer-events-none'
+        }`}
+      >
+        <div className="flex flex-col items-center justify-start h-full px-6 text-white overflow-y-auto pt-32 pb-10">
+          <nav className="flex flex-col items-center gap-6 w-full max-w-sm">
+            {navItems.map((item) => (
+              <div key={item.label} className="text-center w-full">
+                {item.to ? (
+                  <Link 
+                    to={item.to} 
+                    className="text-xl font-bold uppercase tracking-widest hover:text-white/60 transition-colors block py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <span className="text-xl font-bold uppercase tracking-widest opacity-40 block py-2">
+                    {item.label}
+                  </span>
+                )}
+                {item.subItems && (
+                  <div className="mt-2 flex flex-col gap-2 bg-white/5 py-3 rounded-2xl">
+                    {item.subItems.map((sub) => (
+                      <div key={sub.label}>
+                        {sub.to.startsWith('/#') ? (
+                          <a
+                            href={sub.to.substring(1)}
+                            className="text-sm font-medium text-white/60 hover:text-white transition-colors block py-1"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {sub.label}
+                          </a>
+                        ) : (
+                          <Link
+                            to={sub.to as any}
+                            className="text-sm font-medium text-white/60 hover:text-white transition-colors block py-1"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {sub.label}
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+        </div>
+      </div>
 
       <SearchModal open={searchOpen} onOpenChange={setSearchOpen} />
     </>

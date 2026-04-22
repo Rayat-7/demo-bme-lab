@@ -2,7 +2,7 @@ import React from 'react';
 
 export function CTASection() {
   return (
-    <section className="py-20 px-6 bg-[#0e1f1a] relative overflow-hidden flex flex-col items-center justify-center">
+    <section className="py-20 px-6 bg-brand-text relative overflow-hidden flex flex-col items-center justify-center">
        {/* Decorative microscopic circles */}
        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-bg/5 rounded-full blur-[100px] pointer-events-none" />
        

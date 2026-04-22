@@ -9,19 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TeamRouteImport } from './routes/team'
+import { Route as PartnershipRouteImport } from './routes/partnership'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as EquipmentRouteImport } from './routes/equipment'
+import { Route as AwardsRouteImport } from './routes/awards'
+import { Route as AssistantsRouteImport } from './routes/assistants'
+import { Route as AreaRouteImport } from './routes/area'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as NewsIndexRouteImport } from './routes/news.index'
+import { Route as FacultyIndexRouteImport } from './routes/faculty.index'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects.$projectId'
 import { Route as NewsNewsIdRouteImport } from './routes/news.$newsId'
 import { Route as FacultyFacultyIdRouteImport } from './routes/faculty.$facultyId'
 
-const TeamRoute = TeamRouteImport.update({
-  id: '/team',
-  path: '/team',
+const PartnershipRoute = PartnershipRouteImport.update({
+  id: '/partnership',
+  path: '/partnership',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsRoute = NewsRouteImport.update({
@@ -32,6 +37,26 @@ const NewsRoute = NewsRouteImport.update({
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EquipmentRoute = EquipmentRouteImport.update({
+  id: '/equipment',
+  path: '/equipment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AwardsRoute = AwardsRouteImport.update({
+  id: '/awards',
+  path: '/awards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistantsRoute = AssistantsRouteImport.update({
+  id: '/assistants',
+  path: '/assistants',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AreaRoute = AreaRouteImport.update({
+  id: '/area',
+  path: '/area',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -48,6 +73,11 @@ const NewsIndexRoute = NewsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => NewsRoute,
+} as any)
+const FacultyIndexRoute = FacultyIndexRouteImport.update({
+  id: '/faculty/',
+  path: '/faculty/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
   id: '/projects/$projectId',
@@ -68,34 +98,49 @@ const FacultyFacultyIdRoute = FacultyFacultyIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/area': typeof AreaRoute
+  '/assistants': typeof AssistantsRoute
+  '/awards': typeof AwardsRoute
+  '/equipment': typeof EquipmentRoute
   '/gallery': typeof GalleryRoute
   '/news': typeof NewsRouteWithChildren
-  '/team': typeof TeamRoute
+  '/partnership': typeof PartnershipRoute
   '/faculty/$facultyId': typeof FacultyFacultyIdRoute
   '/news/$newsId': typeof NewsNewsIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/faculty/': typeof FacultyIndexRoute
   '/news/': typeof NewsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/area': typeof AreaRoute
+  '/assistants': typeof AssistantsRoute
+  '/awards': typeof AwardsRoute
+  '/equipment': typeof EquipmentRoute
   '/gallery': typeof GalleryRoute
-  '/team': typeof TeamRoute
+  '/partnership': typeof PartnershipRoute
   '/faculty/$facultyId': typeof FacultyFacultyIdRoute
   '/news/$newsId': typeof NewsNewsIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/faculty': typeof FacultyIndexRoute
   '/news': typeof NewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/area': typeof AreaRoute
+  '/assistants': typeof AssistantsRoute
+  '/awards': typeof AwardsRoute
+  '/equipment': typeof EquipmentRoute
   '/gallery': typeof GalleryRoute
   '/news': typeof NewsRouteWithChildren
-  '/team': typeof TeamRoute
+  '/partnership': typeof PartnershipRoute
   '/faculty/$facultyId': typeof FacultyFacultyIdRoute
   '/news/$newsId': typeof NewsNewsIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/faculty/': typeof FacultyIndexRoute
   '/news/': typeof NewsIndexRoute
 }
 export interface FileRouteTypes {
@@ -103,53 +148,73 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/area'
+    | '/assistants'
+    | '/awards'
+    | '/equipment'
     | '/gallery'
     | '/news'
-    | '/team'
+    | '/partnership'
     | '/faculty/$facultyId'
     | '/news/$newsId'
     | '/projects/$projectId'
+    | '/faculty/'
     | '/news/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/area'
+    | '/assistants'
+    | '/awards'
+    | '/equipment'
     | '/gallery'
-    | '/team'
+    | '/partnership'
     | '/faculty/$facultyId'
     | '/news/$newsId'
     | '/projects/$projectId'
+    | '/faculty'
     | '/news'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/area'
+    | '/assistants'
+    | '/awards'
+    | '/equipment'
     | '/gallery'
     | '/news'
-    | '/team'
+    | '/partnership'
     | '/faculty/$facultyId'
     | '/news/$newsId'
     | '/projects/$projectId'
+    | '/faculty/'
     | '/news/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AreaRoute: typeof AreaRoute
+  AssistantsRoute: typeof AssistantsRoute
+  AwardsRoute: typeof AwardsRoute
+  EquipmentRoute: typeof EquipmentRoute
   GalleryRoute: typeof GalleryRoute
   NewsRoute: typeof NewsRouteWithChildren
-  TeamRoute: typeof TeamRoute
+  PartnershipRoute: typeof PartnershipRoute
   FacultyFacultyIdRoute: typeof FacultyFacultyIdRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
+  FacultyIndexRoute: typeof FacultyIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/team': {
-      id: '/team'
-      path: '/team'
-      fullPath: '/team'
-      preLoaderRoute: typeof TeamRouteImport
+    '/partnership': {
+      id: '/partnership'
+      path: '/partnership'
+      fullPath: '/partnership'
+      preLoaderRoute: typeof PartnershipRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -164,6 +229,34 @@ declare module '@tanstack/react-router' {
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/equipment': {
+      id: '/equipment'
+      path: '/equipment'
+      fullPath: '/equipment'
+      preLoaderRoute: typeof EquipmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/awards': {
+      id: '/awards'
+      path: '/awards'
+      fullPath: '/awards'
+      preLoaderRoute: typeof AwardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistants': {
+      id: '/assistants'
+      path: '/assistants'
+      fullPath: '/assistants'
+      preLoaderRoute: typeof AssistantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/area': {
+      id: '/area'
+      path: '/area'
+      fullPath: '/area'
+      preLoaderRoute: typeof AreaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -186,6 +279,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/news/'
       preLoaderRoute: typeof NewsIndexRouteImport
       parentRoute: typeof NewsRoute
+    }
+    '/faculty/': {
+      id: '/faculty/'
+      path: '/faculty'
+      fullPath: '/faculty/'
+      preLoaderRoute: typeof FacultyIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/projects/$projectId': {
       id: '/projects/$projectId'
@@ -226,11 +326,16 @@ const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AreaRoute: AreaRoute,
+  AssistantsRoute: AssistantsRoute,
+  AwardsRoute: AwardsRoute,
+  EquipmentRoute: EquipmentRoute,
   GalleryRoute: GalleryRoute,
   NewsRoute: NewsRouteWithChildren,
-  TeamRoute: TeamRoute,
+  PartnershipRoute: PartnershipRoute,
   FacultyFacultyIdRoute: FacultyFacultyIdRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
+  FacultyIndexRoute: FacultyIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
